@@ -1,3 +1,7 @@
+import torch
+import torch.nn as nn
+from torch.nn import Module
+
 def conv_block(in_ch, out_ch):
     conv = nn.Sequential(
         nn.Conv2d(in_ch, out_ch, kernel_size=3, stride=1, padding=1, bias=True),
