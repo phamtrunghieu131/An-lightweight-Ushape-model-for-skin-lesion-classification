@@ -1,1 +1,1 @@
-# The complete code will be available once the paper is accepted.
+# An efficient dermatological lesion diagnosis method based on U-shape architecture and attention modules
