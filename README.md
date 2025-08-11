@@ -16,11 +16,16 @@
 
 ## Data
 
+Download the datasets from the corresponding links below and place them in the `data/` folder.
+
+
 ISIC2016: https://challenge.isic-archive.com/landing/2016/
 
 ISIC2017: https://challenge.isic-archive.com/landing/2017/
 
 PH2: https://www.fc.up.pt/addi/ph2%20database.html
+
+Process the data using the `.ipynb` files corresponding to each dataset. The processed data will be in .npy format and must be placed in the `loaded_data/` folder. Note that our program is designed to run on processed data.
 
 
 ## Project Structure
@@ -45,4 +50,10 @@ main_folder/
 ├── main.py                     # Main script
 ├── README.md                   # Project documentation
 └── requirements.txt            # Python dependencies
+```
+
+## Run
+
+```code
+python -m ./main.py
 ```
