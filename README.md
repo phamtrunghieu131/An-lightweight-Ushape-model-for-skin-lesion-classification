@@ -6,6 +6,21 @@
 
 <img width="908" height="801" alt="proposedmodel2" src="https://github.com/user-attachments/assets/b7325bd6-98f8-4a9b-8e61-24a3ff598d2a" />
 
+###  Dual Convolutional Permuted Block Attention Module
+
+![alt text](image/image-1.png)
+
+###  Multi-scale Feature Channel Attention Module
+
+![alt text](image/image-2.png)
+
+## Data
+
+ISIC2016: https://challenge.isic-archive.com/landing/2016/
+
+ISIC2017: https://challenge.isic-archive.com/landing/2017/
+
+PH2: https://www.fc.up.pt/addi/ph2%20database.html
 
 
 ## Project Structure
@@ -15,6 +30,7 @@ main_folder/
 ├── __pycache__/                # Compiled Python files
 ├── data/                       # Raw data directory
 ├── loaded_data/                # Preprocessed data
+├── image/                      # Image folder
 ├── model/                      # Model architecture and modules
 │   ├── __pycache__/
 │   ├── DCPBAM.py               # DCPBAM attention module
@@ -29,11 +45,4 @@ main_folder/
 ├── main.py                     # Main script
 ├── README.md                   # Project documentation
 └── requirements.txt            # Python dependencies
-```
-
-
-# Running
-
-```code
- python -m main.py
 ```
