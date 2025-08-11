@@ -1,0 +1,8 @@
+torch
+torchvision
+numpy
+imgaug
+prettytable
+cv2
+opencv-python
+gc
