@@ -7,6 +7,8 @@ import gc
 from imgaug import augmenters as iaa
 from imgaug.augmentables.segmaps import SegmentationMapsOnImage
 import random
+import numpy as np
+import math
 
 
 # args
@@ -16,6 +18,8 @@ epochs = 100
 in_channels = 3
 training_strategy = 1
 saving_each_epoch = True
+
+use_tversky_kahneman_loss = False
 
 nums_class = 1   # for binary classification
 nums_mask = 1    # for segment skin lesion
@@ -31,7 +35,7 @@ mask_labels = mask_labels.astype("uint16")
 
 index = np.arange(len(skin_images))
 num_batches = int(math.floor(index.shape[0]/batch_size))
-filter_list = [2*(2**i) for i in range(5)]
+filter_list = [16*(2**i) for i in range(5)]
 out_dict = {'class':nums_class, 'image':nums_mask}
 
 
@@ -42,8 +46,11 @@ else:
 
 
 class_critiation = nn.BCELoss()
-mask_critiation = tversky_kahneman_loss
-optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+
+if use_tversky_kahneman_loss:
+	mask_critiation = tversky_kahneman_loss
+else:
+	mask_critiation = nn.BCELoss()
 
 seq = iaa.Sequential([
     iaa.Crop(px=(0, 10)),
@@ -59,6 +66,7 @@ if training_strategy in [1, 2, 3]:
 else:
 	model = EncoderModel(in_channels, filter_list, out_dict).to(device)
 
+optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
 
 ### Training ###
 
@@ -324,5 +332,3 @@ if training_strategy == 4:
 
 	  if saving_each_epoch:
 	  	torch.save(model.state_dict(), 'weights/strategy4_' + str(e+1) + '.pkl')
-
-	  	
