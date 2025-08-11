@@ -16,7 +16,7 @@
 
 ## Data
 
-![alt text](image.png)
+![alt text](image/image.png)
 
 Download the datasets from the corresponding links below and place them in the `data/` folder.
 
