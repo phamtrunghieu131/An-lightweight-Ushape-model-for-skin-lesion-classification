@@ -106,7 +106,7 @@ class DCPBAM(nn.Module):
             self.out_proj = None
 
         # optional normalization/activation
-        self.relu = nn.ReLU(inplace=True)
+        self.relu = nn.ReLU(inplace=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # top branch

@@ -45,27 +45,27 @@ class MFCAM(nn.Module):
         # Branch 1: 1x1
         self.b1_conv = nn.Conv2d(C, C, kernel_size=1, bias=False)
         self.b1_bn = nn.BatchNorm2d(C)
-        self.b1_relu = nn.ReLU(inplace=True)
+        self.b1_relu = nn.ReLU(inplace=False)
         self.b1_se = SEModule(C)
 
         # Branch 2: 3x3
         self.b2_conv = nn.Conv2d(C, C, kernel_size=3, padding=1, bias=False)
         self.b2_bn = nn.BatchNorm2d(C)
-        self.b2_relu = nn.ReLU(inplace=True)
+        self.b2_relu = nn.ReLU(inplace=False)
         self.b2_se = SEModule(C)
 
         # Branch 3: 3x3 -> 1x1
         self.b3_conv1 = nn.Conv2d(C, C, kernel_size=3, padding=1, bias=False)
         self.b3_bn1 = nn.BatchNorm2d(C)
-        self.b3_relu1 = nn.ReLU(inplace=True)
+        self.b3_relu1 = nn.ReLU(inplace=False)
         self.b3_conv2 = nn.Conv2d(C, C, kernel_size=1, bias=False)
         self.b3_bn2 = nn.BatchNorm2d(C)
-        self.b3_relu2 = nn.ReLU(inplace=True)
+        self.b3_relu2 = nn.ReLU(inplace=False)
         self.b3_se = SEModule(C)
 
         # Branch 4: identity -> SE (no conv)
         self.b4_se = SEModule(C)
-        self.b4_relu = nn.ReLU(inplace=True)
+        self.b4_relu = nn.ReLU(inplace=False)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         # Branch 1
